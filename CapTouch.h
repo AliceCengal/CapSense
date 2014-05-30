@@ -31,39 +31,37 @@
 #include "WProgram.h"
 #endif
 
-// library interface description
 class CapTouch
 {
-  // user-accessible "public" interface
   public:
-  
-  // variables
-	int error;
-	long  total;
-	unsigned long baselineR;
-	uint8_t calibrateFlag;
-	unsigned int lastSamples;
 
-	uint8_t sBit;   // send pin's ports and bitmask
-	uint8_t sPort;
-	volatile uint8_t *sReg;
-	volatile uint8_t *sOut;
-	
-	uint8_t rBit;    // receive pin's ports and bitmask 
-	uint8_t rPort;
-	volatile uint8_t *rReg;
-	volatile uint8_t *rIn;
-	volatile uint8_t *rOut;
-	
-    // methods
-	
-	// constructor
-    CapTouch(uint8_t sendPin, uint8_t receivePin);
-	
-	long readTouch(uint8_t samples);
-		
-	// calibrate the baseline value for Slider method
-	long calibrateTouch(uint8_t samples);
+  // variables
+  int           error;
+  long          total;
+  unsigned long baselineR;
+  uint8_t       calibrateFlag;
+  unsigned int  lastSamples;
+
+  uint8_t          sBit;    // send pin's ports and bitmask
+  uint8_t          sPort;
+  volatile uint8_t *sReg;
+  volatile uint8_t *sOut;
+
+  uint8_t          rBit;    // receive pin's ports and bitmask 
+  uint8_t          rPort;
+  volatile uint8_t *rReg;
+  volatile uint8_t *rIn;
+  volatile uint8_t *rOut;
+
+  // methods
+
+  // constructor
+  CapTouch(uint8_t sendPin, uint8_t receivePin);
+
+  long readTouch(uint8_t samples);
+    
+  // calibrate the baseline value for Slider method
+  long calibrateTouch(uint8_t samples);
 
 };
 
