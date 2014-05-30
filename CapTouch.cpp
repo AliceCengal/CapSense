@@ -63,7 +63,7 @@ long CapTouch::readTouch(uint8_t samples) {
   int i;
   total = 0;
 
-  // calibratess the baseline value
+  // calibrates the baseline value
   // first time after powerup or reset calibrates the sensor with baseline
   // so sensor should be in "untouched" state at powerup
 
@@ -96,10 +96,10 @@ long CapTouch::readTouch(uint8_t samples) {
 
     // set receive pin HIGH briefly to charge up fully - because the while loop above will exit when pin is ~ 2.5V 
     noInterrupts();
-    *rOut  |= rBit;        // set receive pin HIGH - turns on pullup 
+    *rOut |= rBit;         // set receive pin HIGH - turns on pullup 
     *rReg |= rBit;         // set pin to OUTPUT - pin is now HIGH AND OUTPUT
     *rReg &= ~rBit;        // set pin to INPUT 
-    *rOut  &= ~rBit;       // turn off pullup
+    *rOut &= ~rBit;        // turn off pullup
 
     *sOut &= ~sBit;        // set send Pin LOW
     interrupts();
@@ -110,7 +110,7 @@ long CapTouch::readTouch(uint8_t samples) {
   }
 
   if (total >= timeoutCount) {
-    return -2;     // total variable over timeout
+    return -2;             // total variable over timeout
     
   } else {
     total = total - baselineR;
@@ -157,10 +157,10 @@ long CapTouch::calibrateTouch(uint8_t samples) {
       
       // set receive pin HIGH briefly to charge up fully - because the while loop above will exit when pin is ~ 2.5V
       noInterrupts();
-      *rOut |= rBit;        // set receive pin HIGH - turns on pullup 
+      *rOut |= rBit;         // set receive pin HIGH - turns on pullup 
       *rReg |= rBit;         // set pin to OUTPUT - pin is now HIGH AND OUTPUT
       *rReg &= ~rBit;        // set pin to INPUT 
-      *rOut &= ~rBit;       // turn off pullup
+      *rOut &= ~rBit;        // turn off pullup
       
       *sOut &= ~sBit;        // set send Pin LOW
       interrupts();
